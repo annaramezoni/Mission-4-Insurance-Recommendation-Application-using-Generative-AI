@@ -6,5 +6,6 @@ export const ai = new GoogleGenAI({
 });
 
 export const MODEL = "gemini-3.5-flash-lite";
+export const FALLBACK_MODEL = "gemini-3.1-flash-lite";
 
 export { Type, ThinkingLevel };
