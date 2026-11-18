@@ -1,0 +1,36 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+.chatbotBox {
+  width: 40vw;
+  height: 70vh;
+  border: 2px solid #0073cf;
+  border-radius: 10px;
+  min-width: 30rem;
+  min-height: 40rem;
+  gap: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.chatHeader {
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: #0073cf;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  height: 3rem;
+  padding: 1rem;
+}
+
+.chatHeader h4 {
+  margin: auto;
+}
+.chatHeader button {
+  background-color: inherit;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
