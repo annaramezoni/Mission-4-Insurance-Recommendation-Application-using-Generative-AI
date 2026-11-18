@@ -1,0 +1,25 @@
+# Build the image from the Dockerfile in the current directory and start the app.
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Frontend.dockerfile
+    ports:
+      - "8000:80"
+    # Use a fixed name for the running container.
+    container_name: m4-frontend
+    volumes:
+      - "./M4-frontend:/app"
+  backend:
+    build:
+      context: .
+      dockerfile: Backend.dockerfile
+    ports:
+      - "3000:3000"
+    # Use a fixed name for the running container.
+    container_name: m4-backend
+    volumes:
+      - "./M4-backend:/app"
+      - "/app/node_modules"
+    environment:
+      PORT: 3000
