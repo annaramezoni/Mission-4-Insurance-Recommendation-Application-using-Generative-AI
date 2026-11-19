@@ -3,6 +3,27 @@
   text-align: center;
 }
 
+.chatButton {
+  display: block;
+  width: fit-content;
+  margin: 2rem auto;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  background-color: #0073cf;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.chatButton:hover {
+  background-color: #005da8;
+}
+
+.chatButton:focus-visible {
+  outline: 3px solid #003f70;
+  outline-offset: 3px;
+}
+
 .vehicleWrapper {
   display: flex;
   justify-content: center;

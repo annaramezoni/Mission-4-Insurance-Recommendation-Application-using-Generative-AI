@@ -1,6 +1,7 @@
 import styles from "./Home.module.css";
 
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
 export default function Home() {
@@ -32,6 +33,9 @@ export default function Home() {
       {/* ============ MAIN =========== */}
       <main className={styles.main}>
         <h2>{welcomeMessage}</h2>
+        <Link to="/chat" className={styles.chatButton}>
+          Chat with Tina
+        </Link>
       </main>
     </div>
   );

@@ -48,7 +48,7 @@ At the end, recommend one or more suitable products, name each suitable product 
 `;
 
 // ========== GEMINI FUNCTION ========== //
-
+//
 async function getChatReply(session, input) {
   const userMessage = {
     role: "user",

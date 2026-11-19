@@ -1,8 +1,10 @@
 import Navbar from "./Navbar";
 import styles from "./Chat.module.css";
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Chat() {
+  const navigate = useNavigate();
   const [sessionId, setSessionId] = useState(null);
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState("");
@@ -95,7 +97,12 @@ export default function Chat() {
           {/* Header */}
           <div className={styles.chatHeader}>
             <h4>Tina - Your AI Insurance Policy Assistant</h4>
-            <button>X</button>
+            <button
+              type="button"
+              aria-label="Return to home"
+              onClick={() => navigate("/")}>
+              X
+            </button>
           </div>
           {/* Chat conversation */}
           <div className={styles.messages} ref={messagesRef}>
