@@ -27,6 +27,11 @@
   height: 3rem;
   padding: 1rem;
 }
+.messages {
+  flex: 1;
+  min-height: 0; /* flex children will shrink and scroll  */
+  overflow-y: auto;
+}
 
 .chatHeader h4 {
   margin: auto;
@@ -37,6 +42,7 @@
   color: inherit;
   cursor: pointer;
 }
+
 .chatMessage {
   display: flex;
   gap: 1rem;
@@ -99,8 +105,9 @@
 .sendButton:active {
   transform: scale(0.94);
 }
-
-/* .sendButton:disabled {
-  background: #0073cf;
+.sendButton:disabled {
+  background-color: #cccccc;
+  color: #777777;
   cursor: not-allowed;
-} */
+  opacity: 0.6;
+}

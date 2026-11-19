@@ -1,18 +1,32 @@
 import Navbar from "./Navbar";
 import styles from "./Chat.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Chat() {
   const [sessionId, setSessionId] = useState(null);
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const messagesRef = useRef(null);
+  const inputRef = useRef(null);
 
   useEffect(() => {
-    getMessageAndId();
+    startChat();
   }, []);
 
-  async function getMessageAndId() {
+  useEffect(() => {
+    const el = messagesRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [messages]);
+
+  useEffect(() => {
+    if (!loading) {
+      inputRef.current?.focus();
+    }
+  }, [loading]);
+
+  // begins a session and loads the welcome message
+  async function startChat() {
     try {
       const response = await fetch("http://localhost:3000/startChat", {
         method: "POST",
@@ -32,7 +46,8 @@ export default function Chat() {
     }
   }
 
-  async function getAndStoreUserInput(e) {
+  // it validates, clears the input, and calls sendMessage
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const input = userInput.trim();
@@ -83,7 +98,7 @@ export default function Chat() {
             <button>X</button>
           </div>
           {/* Chat conversation */}
-          <div>
+          <div className={styles.messages} ref={messagesRef}>
             {messages.map((message, index) => (
               <div className={styles.chatMessage} key={index}>
                 <strong>{message.sender}:</strong>
@@ -99,22 +114,22 @@ export default function Chat() {
             ))}
           </div>
           {/* Input box */}
-          <form
-            className={styles.inputContainer}
-            onSubmit={getAndStoreUserInput}>
+          <form className={styles.inputContainer} onSubmit={handleSubmit}>
             <input
+              ref={inputRef}
               className={styles.chatInput}
               type="text"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
               placeholder="Type your message..."
-              disabled={loading}
+              disabled={loading} //It prevents the user from sending another message while Tina is still processing the previous one.
             />
             <button
               className={styles.sendButton}
               type="submit"
               aria-label="Send" //accessibility
-              disabled={loading || !userInput.trim()}>
+              disabled={loading || !userInput.trim()} //It prevents submitting an empty message.
+            >
               Send
             </button>
           </form>
