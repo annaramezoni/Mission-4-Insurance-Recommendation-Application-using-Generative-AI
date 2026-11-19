@@ -13,6 +13,9 @@
   min-height: 40rem;
   gap: 1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
 }
 .chatHeader {
   display: flex;
@@ -34,3 +37,70 @@
   color: inherit;
   cursor: pointer;
 }
+.chatMessage {
+  display: flex;
+  gap: 1rem;
+  padding: 0.8rem;
+}
+.tinaMessage,
+.userMessage {
+  padding: 0.3rem;
+  border-radius: 5px;
+}
+.tinaMessage {
+  background-color: rgb(202, 228, 247);
+}
+.userMessage {
+  background-color: rgb(224, 228, 234);
+}
+.inputContainer {
+  margin-top: auto;
+  padding: 0.5rem;
+  align-self: center;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.chatInput {
+  width: 70%;
+  flex: 1;
+  padding: 0.75rem 1.1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #1f2937;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  color: #595d64;
+}
+
+.chatInput::placeholder {
+  color: #9ca3af;
+}
+
+.sendButton {
+  width: 20%;
+  font-size: 1.1rem;
+  color: #fff;
+  background: #2563eb;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.sendButton:hover {
+  background: #1d4ed8;
+}
+
+.sendButton:active {
+  transform: scale(0.94);
+}
+
+/* .sendButton:disabled {
+  background: #0073cf;
+  cursor: not-allowed;
+} */

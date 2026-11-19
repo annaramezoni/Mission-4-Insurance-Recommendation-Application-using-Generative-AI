@@ -27,7 +27,7 @@ The three insurance products are (use only these,do not invent coverage):
 
 Ask questions to uncover details that help identify
 which policy is best for the customer.
-Before recommending, make sure you know: vehicle type, vehicle age(give the customer the option to answer with age or year), and how the customer uses the car. If the custumer does not answer that it is a racing car, make sure, in a polite way that it is not used for racing. Ask one question at a time.
+Before recommending, make sure you know: vehicle type, vehicle age(give the customer the option to answer with age or year), and how the customer uses the car. If the omer does not answer that it is a racing car, make sure, in a polite way that it is not used for racing. Ask one question at a time.
 
 Business rules:
 - MBI is not available for trucks and racing cars.
@@ -138,6 +138,7 @@ export async function startChat(req, res) {
 
     const session = {
       history: [
+        //Gemini conversation format
         {
           role: "model",
           parts: [{ text: welcomeMessage }],
@@ -145,7 +146,7 @@ export async function startChat(req, res) {
       ],
       messages: [
         {
-          role: "assistant",
+          sender: "Tina",
           content: welcomeMessage,
         },
       ],
@@ -189,11 +190,11 @@ export async function chat(req, res) {
 
     session.messages.push(
       {
-        role: "user",
+        sender: "Me",
         content: message,
       },
       {
-        role: "assistant",
+        sender: "Tina",
         content: answer,
       },
     );
